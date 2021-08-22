@@ -5,8 +5,8 @@ import shutil
 import socket
 import emails
 
-sender = automation@example.com
-receiver = <username>@example.com
+sender = 'automation@example.com'
+receiver = 'student-01-1b00a15bbab3@example.com'
 body = 'Please check your system and resolve the issue as soon as possible.'
 
 cpu_prcnt = psutil.cpu_percent(1)
@@ -19,13 +19,13 @@ if cpu_prcnt > 80:
 disk_used = shutil.disk_usage('/')
 disk_prcnt = disk_used.free/disk_used.total * 100
 
-if disk_prcnt > 20:
+if disk_prcnt < 20:
     subject = 'Error - Available disk space is less than 20%'
     message = emails.generate_error_email(sender, receiver, subject, body)
     emails.send(message)
 
 ram = psutil.virtual_memory()
-if ram < 524288000:
+if ram.available < 524288000:
     subject = "Error - Available memory is less than 500MB"
     message = emails.generate_error_email(sender, receiver, subject, body)
     emails.send(message)

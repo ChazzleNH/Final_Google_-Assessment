@@ -12,7 +12,7 @@ def generate_email(sender, receiver, subject, body, attachment_path):
     message['From'] = sender
     message['To'] = receiver
     message['Subject'] = subject
-    message.set_contect(body)
+    message.set_content(body)
 
     attachment_filename = os.path.basename(attachment_path)
     mime_type, _ = mimetypes.guess_type(attachment_path)
@@ -41,4 +41,3 @@ def send(message):
     mail_server = smtplib.SMTP('localhost')
     mail_server.send_message(message)
     mail_server.quit()
-
