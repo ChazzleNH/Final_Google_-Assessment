@@ -5,6 +5,7 @@ import smtplib
 import mimetypes
 import os.path 
 
+''' the script to be imported so the emails can be generated sent after the reports are generated '''
 
 def generate_email(sender, receiver, subject, body, attachment_path):
 
